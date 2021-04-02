@@ -1,5 +1,4 @@
-﻿@model ImageResizeWebApp.Models.AzStorageConfig
-@{
+﻿@{
     ViewData["Title"] = "Image Resize";
 }
 
@@ -75,18 +74,6 @@
 
                 </ul>
             </div>
-        <h2>Storage info</h2>
-            <div id="storageinfo">
-                <ul id="storageinfodetails">
-                    <li>@Model.AccountName</li>
-                    <li>@Model.AccountKey</li>
-                    <li>@Model.AccountUri</li>
-                    <li>@Model.BlobStorageUri</li>
-                    <li>@Model.ImageContainer</li>
-                    <li>@Model.ThumbnailContainer</li>
-                </ul>
-            </div>
-        
     </div>
     <div class="box footer">
         <hr>
@@ -118,7 +105,7 @@
                 var ul = $('#thumbnails>ul');
                 ul.html('')
                 for(var link of fetchedImageLinks) {
-                    ul.append('<li><span>' + link + '</span></li>')
+                    ul.append("<li><a href='" + link + "'>" + link + "</li>")
                 }
             }
         })
