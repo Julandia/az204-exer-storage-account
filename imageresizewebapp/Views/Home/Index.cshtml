@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ImageResizeWebApp.Models.AzStorageConfig
+@{
     ViewData["Title"] = "Image Resize";
 }
 
@@ -72,6 +73,17 @@
             <div id="thumbnails">
                 <ul id="thumbnail-urls">
 
+                </ul>
+            </div>
+        <h2>Storage info</h2>
+            <div id="storageinfo">
+                <ul id="storageinfodetails">
+                    <li>@Model.AccountName</li>
+                    <li>@Model.AccountKey</li>
+                    <li>@Model.AccountUri</li>
+                    <li>@Model.BlobStorageUri</li>
+                    <li>@Model.ImageContainer</li>
+                    <li>@Model.ThumbnailContainer</li>
                 </ul>
             </div>
         

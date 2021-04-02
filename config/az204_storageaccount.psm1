@@ -57,7 +57,7 @@ function SetWebAppConfig {
 }
 
 function DeployWebApp {
-    $webAppList = $(az webapp list --resource-group $RGName --query "[].name" --output tsv)
+    $webAppList = $(az webapp list --resource-group $RGName --query "[?contains(name, 'ShsImageResizeWebApp')].name" --output tsv)
     if ($webAppList.length -eq 0) {
         Write-Verbose -Message "Create web app" + $WebAppName      
         try {  
@@ -66,7 +66,9 @@ function DeployWebApp {
             Write-Error -Message "Unable to create web app"
         }
     }
-     
+    az webapp deployment source config --name $WebAppName --resource-group $RGName `
+        --branch master --manual-integration `
+        --repo-url https://github.com/Julandia/az204-exer-storage-account.git
 }
 
 Export-ModuleMember -Function CreateImageResizeContainers, SetThumbNailsContainerAccessMode, DeployWebApp, SetWebAppConfig
